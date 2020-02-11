@@ -131,7 +131,35 @@ services:
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
-  fifabotapi:
-    image: fifabotapi_web:latest
-    ports:
-        - "80:80"
+
+    fifabotapi:
+        image: fifabotapi_web
+        ports:
+            - "80:80"
+        depends_on:
+            - ms-sql-server 
+        command: >
+          /bin/bash -c "
+            sleep 20;
+            nc -lk 0.0.0.0 8080;
+          "
+      networks:
+      - monitor-net
+          
+    ms-sql-server:
+        image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
+        environment:
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: "Password2019" 
+            
+        ports:  
+            - '1433:1433'  
+        expose:  
+            - 1433 
+        volumes:
+            - my-datavolume:/var/lib/mysql
+        networks:
+      - monitor-net
+      
+volumes:
+  my-datavolume:
