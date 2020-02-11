@@ -143,8 +143,8 @@ services:
             sleep 20;
             nc -lk 0.0.0.0 8080;
           "
-      networks:
-        - monitor-net
+        networks:
+            - monitor-net
           
   ms-sql-server:
         image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
