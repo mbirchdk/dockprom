@@ -132,7 +132,7 @@ services:
     labels:
       org.label-schema.group: "monitoring"
 
-    fifabotapi:
+  fifabotapi:
         image: fifabotapi_web
         ports:
             - "80:80"
@@ -144,7 +144,7 @@ services:
             nc -lk 0.0.0.0 8080;
           "
           
-    ms-sql-server:
+  ms-sql-server:
         image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
         environment:
             ACCEPT_EULA: "Y"
