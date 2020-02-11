@@ -155,6 +155,6 @@ services:
         ports:  
             - '1433:1433'  
         expose:  
-            - 1433do 
+            - 1433
         networks:
             - monitor-net
