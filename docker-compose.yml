@@ -143,6 +143,8 @@ services:
             sleep 20;
             nc -lk 0.0.0.0 8080;
           "
+      networks:
+        - monitor-net
           
   ms-sql-server:
         image: mcr.microsoft.com/mssql/server:2017-latest-ubuntu
@@ -154,8 +156,5 @@ services:
             - '1433:1433'  
         expose:  
             - 1433 
-        volumes:
-            - my-datavolume:/var/lib/mysql
-      
-volumes:
-  my-datavolume:
+        networks:
+            - monitor-net
