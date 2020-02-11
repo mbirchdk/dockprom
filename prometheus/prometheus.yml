@@ -31,7 +31,7 @@ scrape_configs:
   - job_name: 'fifabotapi'
     scrape_interval: 10s
     static_configs:
-      - targets: ['fifabotapi']
+      - targets: ['fifabotapi:80']
 
   - job_name: 'pushgateway'
     scrape_interval: 10s
